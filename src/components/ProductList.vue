@@ -11,14 +11,21 @@
             </h4>
             <div class="car-text bg-white p-1">{{ p.description }}</div>
         </div>
+        <page-controls />
     </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+
+import { mapState, mapGetters } from "vuex";
+import PageControls from "./PageControls";
+
 export default {
+    components: { PageControls },
+    
     computed: {
-        ...mapState(["products"])
+        //...mapState(["products"]),
+        ...mapGetters({ products: "processedProducts" })
     },
     filters: {
         currency(value) {
